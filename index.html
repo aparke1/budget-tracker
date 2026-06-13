@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Budget Tracker</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class="page-shell">
+		<header class="hero card">
+			<div>
+				<p class="eyebrow">Personal Finance</p>
+				<h1>Budget Tracker</h1>
+				<p class="hero-copy">Log expenses, review spending patterns, and track totals at a glance.</p>
+			</div>
+			<div class="hero-badge">
+				<span class="badge-label">Live data</span>
+				<strong>localStorage enabled</strong>
+			</div>
+		</header>
+
+		<main class="layout">
+			<section class="column">
+				<article class="card form-card">
+					<div class="section-heading">
+						<h2>Add Expense</h2>
+						<p>Record a new purchase in a few seconds.</p>
+					</div>
+
+					<form id="expense-form" novalidate>
+						<div class="form-grid">
+							<label class="field">
+								<span>Description</span>
+								<input type="text" id="description" name="description" placeholder="Groceries, bus fare, rent..." required maxlength="80" />
+							</label>
+
+							<label class="field">
+								<span>Amount</span>
+								<input type="number" id="amount" name="amount" placeholder="0.00" min="0.01" step="0.01" required />
+							</label>
+
+							<label class="field">
+								<span>Category</span>
+								<select id="category" name="category" required>
+									<option value="Food">Food</option>
+									<option value="Transport">Transport</option>
+									<option value="Rent">Rent</option>
+									<option value="Entertainment">Entertainment</option>
+									<option value="Utilities">Utilities</option>
+									<option value="Other">Other</option>
+								</select>
+							</label>
+
+							<label class="field">
+								<span>Date</span>
+								<input type="date" id="date" name="date" required />
+							</label>
+						</div>
+
+						<button type="submit" class="primary-button">Add Expense</button>
+						<p class="form-note" id="form-note" aria-live="polite"></p>
+					</form>
+				</article>
+
+				<article class="card summary-card">
+					<div class="section-heading">
+						<h2>Summary</h2>
+						<p>Total spending and category breakdown.</p>
+					</div>
+
+					<div class="summary-grid">
+						<div class="summary-tile accent">
+							<span>Total Spending</span>
+							<strong id="total-spending">$0.00</strong>
+						</div>
+						<div class="summary-tile">
+							<span>Entries</span>
+							<strong id="expense-count">0</strong>
+						</div>
+					</div>
+
+					<div id="category-summary" class="category-summary" aria-label="Category totals"></div>
+				</article>
+			</section>
+
+			<section class="column column-wide">
+				<article class="card table-card">
+					<div class="section-heading">
+						<h2>Expenses</h2>
+						<p>All logged entries with quick delete controls.</p>
+					</div>
+
+					<div class="table-wrap">
+						<table>
+							<thead>
+								<tr>
+									<th>Description</th>
+									<th>Category</th>
+									<th>Date</th>
+									<th>Amount</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody id="expense-list"></tbody>
+						</table>
+					</div>
+				</article>
+
+				<article class="card chart-card">
+					<div class="section-heading">
+						<h2>Spending Chart</h2>
+						<p>Doughnut chart of spending by category.</p>
+					</div>
+					<div class="chart-wrap">
+						<canvas id="category-chart" aria-label="Spending by category chart" role="img"></canvas>
+					</div>
+				</article>
+			</section>
+		</main>
+	</div>
+</body>
+</html>
