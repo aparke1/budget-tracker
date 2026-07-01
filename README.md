@@ -1,8 +1,14 @@
 # Budget Tracker
 
-A simple, fully functional budget tracking website built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools—just open `index.html` in your browser and start tracking expenses.
+A simple, fully functional budget tracking website built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools—just open `index.html` in your browser and start tracking expenses, or visit the live deployment.
+
+## Live Demo
+
+The application is deployed and hosted on Netlify:
+👉 **[budget-tracker-new.netlify.app](https://budget-tracker-new.netlify.app)**
 
 ## Features
+
 
 - **Add Expenses** – Log purchases with description, amount, category, and date
 - **Expense List** – View all logged expenses in a sortable table with delete controls
@@ -29,6 +35,7 @@ budget-tracker/
 ├── index.html       # Main HTML structure
 ├── style.css        # Responsive styling (no inline styles)
 ├── script.js        # Vanilla JavaScript logic
+├── netlify.toml     # Netlify deployment configuration
 └── README.md        # This file
 ```
 
@@ -125,6 +132,26 @@ Click the "Delete" button in any table row. The expense is removed from storage 
 - Check console for JavaScript errors
 - Verify all input fields are filled before submitting
 - Amounts must be positive numbers
+
+## Deployment
+
+This site is configured for manual deployment or continuous deployment via Netlify.
+
+### Configuration
+The [netlify.toml](netlify.toml) file specifies the publish directory:
+```toml
+[build]
+  command = ""
+  publish = "."
+```
+
+### Manual Deployment via CLI
+To deploy changes manually:
+1. Ensure the Netlify CLI is available (via `npx netlify`).
+2. Run production deployment:
+   ```bash
+   npx netlify deploy --prod
+   ```
 
 ## License
 
